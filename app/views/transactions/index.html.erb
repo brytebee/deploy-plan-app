@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<%= link_to "" do  %>
+  <div class="d-flex gap-3 p-2 bg-second w-100 text-white justify-content-center fs-5">
+    <strong>Total transaction:</strong> <%= number_to_currency(@total_transactions) %>
+  </div>
+<% end %>
+
+<div id="transactions">
+  <% @recent_transactions.each do |transaction| %>
+  <% if can? :read, transaction %>
+    <%= link_to transaction do %>
+      <div class="card-1">
+        <%= render transaction %>
+      </div>
+    <% end %>
+  <% end %>
+  <% end %>
+</div>
+
+<div class="d-flex gap-3">
+  <%= link_to "New category", new_category_path, class: "btn bg-first text-white w-50" %>
+  <%= link_to "New transaction", new_transaction_path, class: "btn bg-second text-white w-50" %>
+</div>

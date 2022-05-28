@@ -1,0 +1,66 @@
+<section class="vh-100" style="background-color: #eee;">
+  
+  <div class="container h-90">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <%= form_with(model: transaction) do |form| %>
+                  <% if transaction.errors.any? %>
+                  <div style="color: red">
+                    <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+                    <ul>
+                      <% transaction.errors.each do |error| %>
+                        <li><%= error.full_message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                  <% end %>
+
+                  <div>
+                    <%#= form.label :name, style: "display: block" %>
+                    <%= form.text_field :name, class:"form-control", placeholder: "Name"  %>
+                  </div>
+
+                  <div>
+                    <%#= form.label :amount, style: "display: block" %>
+                    <%= form.text_field :amount, class:"form-control mt-3 mb-3", placeholder: "Enter Amount" %>
+                  </div>
+
+                  <div>
+                    <%#= form.label :author_id, style: "display: block" %>
+                    <%= form.text_field :author_id, value: current_user.id, hidden: true %>
+                  </div>
+
+                  <div>
+                    <%#= form.label :category_id, style: "display: block" %>
+                    <div>
+                      <%= form.select :category_id, current_user.categories.collect {|c| [c.name, c.id]}, { prompt: "Select Category" }, class:"form-control mb-3" %>
+                    </div>
+                  </div>
+
+                  <div>
+                    <%= form.submit "Add Transaction", class: "btn btn-primary form-control" %>
+                  </div>
+                <% end %>
+                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                  <%= link_to "Back to transactions", transactions_path %>
+                </div>
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid" alt="Sample image">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,12 @@
+<div id="<%= dom_id transaction %>">
+  <div class="d-flex justify-content-between">
+    <%= image_tag "#{transaction.category.icon}", size: "80x80", alt: 'icon' %>
+    <div>
+      <li><p class="d-flex align-items-center justify-content-between text_me"><%= transaction.name %></p></li>
+      <span class="created_at"><%= transaction.created_at.strftime('%F - %I:%M:%S %p') %></span>
+    </div>
+    <div class="mt-3">
+    <h6 class="total_at"> <%= number_to_currency(transaction.amount) %></h6>
+    </div>
+  </div>
+</div>

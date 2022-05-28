@@ -1,0 +1,12 @@
+<div class="p-5">
+  <div class="">
+    <p style="color: red"><%= flash[:alert] %></p>
+    <div class="d-flex justify-content-center">
+      <%= image_tag '/assets/images/plan_app_demo_1.gif', size: "250x240", alt: 'icon', class: "justify-content-center" %>
+    </div>
+    <div class="d-grid gap-2 col-12 mx-auto">
+      <%= link_to "Log in", new_user_session_path, class: "btn bg-first text-white hover-text-black" %>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

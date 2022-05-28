@@ -1,0 +1,47 @@
+.body {
+  font-family: "Roboto Slab", serif;
+}
+
+.bg-first {
+  background-color: #3778c2;
+}
+
+.color-first {
+  color: #3778c2;
+}
+
+.bg-second {
+  background-color: #5fb523;
+}
+
+.text_me {
+  color: #434b54;
+}
+
+.card-1 {
+  background-color: #fff;
+  padding: 10px 10px;
+  font-size: 20px;
+  border-radius: 13px;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  margin: 10px 0;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.created_at {
+  font-size: 10px;
+  color: #434b54;
+}
+
+.total_at {
+  font-size: 15px;
+  color: #434b54;
+}
+
+ul,
+li {
+  list-style-type: none;
+}

@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="mx-4">
+  <%= render @category %>
+
+  <% if can? :update, @category %>
+    <%= link_to "Edit this category", edit_category_path(@category), hidden: true %>
+  <% end %>
+
+  <%= link_to "Back to categories", categories_path, hidden: true %>
+
+  <% if can? :destroy, @category %>
+    <%= button_to "Destroy this category", @category, method: :delete, hidden: true %>
+  <% end %>
+</div>
+
+<div>
+  <% if @category.transactions.empty? %>
+    <p>Add some transactions. There's none yet!</p>
+  <% else %>
+    <% @category.transactions.order(created_at: :desc).each do |transaction| %>
+      <%= link_to transaction do %>
+        <div class="card-1">
+          <%= render transaction %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <div class="d-flex gap-3">
+    <%= link_to "New transaction", new_transaction_path, class: "btn bg-second text-white w-100" %>
+  </div>
+</div>

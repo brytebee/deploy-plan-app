@@ -1,0 +1,83 @@
+<% if controller_name != 'splash_screen' %>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-first">
+    <div class="container-fluid">
+      <% unless "#{action_name.capitalize} #{controller_name.capitalize.singularize}" == "Index Category" || "#{action_name.capitalize} #{controller_name.capitalize.singularize}" == "Index Transaction" %>
+        <%# <i class="bi bi-arrow-left text-white fs-4"></i> %>
+        <%# <%= link_to "Back", "history.back()" %>
+        <% if "#{action_name.capitalize} #{controller_name.capitalize.singularize}" == "New Transaction" %>
+          <%= link_to 'javascript:history.back()' do %>
+            <i class="bi bi-arrow-left text-white fs-4"></i> 
+          <% end %>
+        <% else %>
+          <%= link_to root_path do %>
+            <i class="bi bi-arrow-left text-white fs-4"></i> 
+          <% end %>
+        <% end %>        
+      <% else %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <% end %>
+      <a class="navbar-brand" href="#">
+        <% case "#{action_name.capitalize} #{controller_name.capitalize.singularize}" %>
+        <% when "New Session" %>
+          LOGIN
+        <% when "New Registration" %>
+          REGISTER
+        <% when "New Password" %>
+          RECOVER PASSWORD
+        <% when "Show Category" %>
+          SINGLE CATEGORY
+        <% when "Index Category" %>
+          CATEGORIES
+        <% when "Index Transaction" %>
+          TRANSACTIONS
+        <% when "New Category" %>
+          ADD NEW CATEGORIES
+        <% when "New Transaction" %>
+          ADD NEW TRANSACTIONS
+        <% when "Show Transaction" %>
+          SINGLE TRANSACTION
+        <% else %>
+          <%= controller_name.upcase.singularize %>
+        <% end %>
+      </a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <% if user_signed_in? %>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item m-3">
+                <%= link_to "Categories", categories_path, class: "text-white" %>
+              </li>
+              <li class="nav-item m-3">
+                <%= link_to "Transactions", transactions_path, class: "text-white" %>
+              </li>
+            </ul>
+          </div>            
+          <% end %>
+          </ul>
+          <div class="d-flex">
+            <% if user_signed_in? %>
+              <h6> Welcome <%=current_user.email %></h6>
+              <a><%= button_to "Log out", destroy_user_session_path, method: :delete %></a>
+            <% end %>
+        </div>
+      </div>
+      <% case "#{action_name.capitalize} #{controller_name.capitalize.singularize}" %>
+        <% when "New Session" %>
+          <%= link_to "Login", session_path(resource_name), class: "text-white" %> 
+        <% when "New Registration" %>
+          <%= link_to "Next", session_path(resource_name), class: "text-white" %>
+        <% when "Index Category" %>
+          <i class="bi bi-search"></i>
+        <% when "Index Transaction" %>
+          <i class="bi bi-search text-white fs-4"></i>
+        <% else %>
+          <p class="color-first"> </p>
+      <% end %>
+    </div>
+  </nav>
+  
+<% end %>

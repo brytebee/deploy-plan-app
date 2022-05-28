@@ -1,0 +1,12 @@
+<div id="<%= dom_id category %>">
+  <div class="d-flex justify-content-between">
+    <%= image_tag "#{category.icon}", size: "80x80", alt: 'icon' %>
+    <div>
+       <li><p class="d-flex align-items-center justify-content-between text_me"><%= category.name %></p></li>
+      <span class="created_at"><%= category.created_at.strftime('%F - %I:%H:%M %p') %></span>
+    </div>
+    <div class="mt-3">
+    <h6 class="total_at"> <%= number_to_currency(category.transactions.sum(:amount)) %></h6>
+    </div>
+  </div>
+</div>
