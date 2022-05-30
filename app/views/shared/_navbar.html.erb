@@ -1,6 +1,6 @@
 <% if controller_name != 'splash_screen' %>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-first">
+  <nav class="navbar navbar-expand-xlg navbar-dark bg-first">
     <div class="container-fluid">
       <% unless "#{action_name.capitalize} #{controller_name.capitalize.singularize}" == "Index Category" || "#{action_name.capitalize} #{controller_name.capitalize.singularize}" == "Index Transaction" %>
         <%# <i class="bi bi-arrow-left text-white fs-4"></i> %>
@@ -46,7 +46,7 @@
       <% if user_signed_in? %>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <h2 class="mt-3 text-white">Welcome </h2>
+            <h2 class="mt-3 text-white">Welcome</h2>
             <hr class='text-white'>
             <h2 class="mt-2 text-white"><%= current_user.name %></h2>
             <hr class='text-white'>
@@ -54,16 +54,16 @@
             <li>
               <h2><%= link_to 'Home', root_path, class: "text-light" %></h2>
             </li>
-            <li><i class="bi bi-house-heart"></i></i></li>
+            <li><i class="bi bi-house-heart text-white"></i></i></li>
             <hr class='text-white'>
             </li>
             <li class="nav-item mt-2">
             <li><h2><%= link_to 'Transactions', transactions_path, class: "text-light" %></h2></li>
-            <li><i class="bi bi-wallet2"></i></li>
+            <li><i class="bi bi-wallet2 text-white"></i></li>
             <hr class='text-white'>
             </li>
-            <li class="nav-item mt-2">
-              <a><%= button_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn primary-color text-white fs-22' %></a></li>
+            <li class="nav-item mt-2 fw-bold">
+              <a><%= button_to "Log out", destroy_user_session_path, method: :delete, class: 'btn primary-color text-white fs-22' %></a></li>
               <hr class='text-white'>
             </li>
           </ul>
@@ -75,7 +75,7 @@
         <% when "New Registration" %>
           <%= link_to "Next", session_path(resource_name), class: "text-white" %>
         <% when "Index Category" %>
-          <i class="bi bi-search"></i>
+          <i class="bi bi-search text-white"></i>
         <% when "Index Transaction" %>
           <i class="bi bi-search text-white fs-4"></i>
         <% else %>
